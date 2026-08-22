@@ -18,7 +18,7 @@
         <p>Você está preso numa casa com um monstro. Escolha um esconderijo no mapa e torça pra ele não passar por lá.
         </p>
         <p><strong>Como funciona a busca:</strong> a cada partida, o monstro Lulu sorteia entre 2 e 4 lugares da casa pra
-          vasculhar — nunca todos. Se ele procurar exatamente onde você está escondido, a cada segundo ali tem 50% de
+          vasculhar — nunca todos. Se ele procurar exatamente onde você está escondido, a cada segundo ali tem 80% de
           chance dele te encontrar.</p>
         <p>Clique num número no mapa pra escolher seu esconderijo, depois aperte "Começar".</p>
         <button id="btn-entendi">Entendi, vamos lá!</button>
@@ -26,7 +26,8 @@
     </div>
     <header>
       <h1>A casa sombria</h1>
-      <div class="subtitle">mapa de referência — vista superior · clique nos pontos numerados para ver o esconderijo
+      <div class="subtitle">mapa de referência — vista superior · clique nos pontos numerados para ver o esconderijo.
+        <p>Esconda-se do monstro Lulu antes que seja tarde!
       </div>
     </header>
 
@@ -309,13 +310,13 @@
         </div>
       </div>
       <div id="game-over" class="game-over-overlay">
-        <div>
+        <div class="gameover-box">
           <p id="game-over-texto"></p>
           <button id="btn-jogar-novamente">Jogar novamente</button>
         </div>
       </div>
     </div>
-
+    <audio id="musica-fundo" src="assets/top-flow-suspense-567297.mp3" loop preload="auto"></audio>
     <footer>mapa gerado para prototipagem — ajuste posições e móveis conforme o layout final do jogo</footer>
   </div>
   <script src="script.js"></script>

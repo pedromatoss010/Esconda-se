@@ -10,7 +10,7 @@ let ultimoTimestamp = null;
 
 let cronometroAcao = 0;
 let cronometroSegundo = 0;
-const CHANCE_POR_SEGUNDO = 0.5;
+const CHANCE_POR_SEGUNDO = 0.8;
 
 const monstro = document.getElementById("monstro")
 const buttonStart = document.getElementById("btn-comecar")
@@ -20,6 +20,7 @@ buttonStart.addEventListener("click", iniciarJogo);
 
 document.getElementById("btn-entendi").addEventListener("click", () => {
   document.getElementById("intro").style.display = "none";
+  document.getElementById("musica-fundo").play();
 });
 
 const rotasPorEsconderijo = {
@@ -101,6 +102,8 @@ function iniciarJogo() {
   waypointIndex = 0;
   posAtual = { x: rotaAtual[0].x, y: rotaAtual[0].y };
 
+  document.getElementById("musica-fundo").play();
+
   requestAnimationFrame(loop); 
 }
 
@@ -114,9 +117,10 @@ function AtualzarPosicao() {
 
 function chegouNoWaypoint(alvo) {
   if (alvo.acao === "andar" || alvo.duracao <= 0) {
-    chegouNoWaypoint(alvo);
+    waypointIndex++;
     return;
   }
+
   cronometroAcao = alvo.duracao;
   cronometroSegundo = 0;
 }
@@ -185,7 +189,7 @@ function moverEmDirecaoA(alvo, deltaMs) {
 
   if (distancia <= passo || distancia === 0) {
     posAtual = { x: alvo.x, y: alvo.y };
-    waypointIndex++;
+    chegouNoWaypoint(alvo)
   } else {
     posAtual = {
       x: posAtual.x + (dx / distancia) * passo,
@@ -197,7 +201,8 @@ function moverEmDirecaoA(alvo, deltaMs) {
 
 function monstroEncontrouJogador() {
   estado = "achou";
-  document.getElementById("status-jogo").textContent = "O monstro te encontrou!";
+  document.getElementById("musica-fundo").pause();
+  document.getElementById("status-jogo").textContent = "O monstro  lulu te encontrou!";
   document.getElementById("game-over-texto").textContent = "Você foi encontrado! Fim de jogo.";
   document.getElementById("game-over").style.display = "flex";
 }
@@ -205,6 +210,7 @@ function monstroEncontrouJogador() {
 
 document.getElementById("btn-jogar-novamente").addEventListener("click", () => {
   document.getElementById("game-over").style.display = "none";
+  document.getElementById("musica-fundo").play();
   estado = "selecionando";
   esconderijoEscolhido = null;
   document.getElementById("status-jogo").textContent = "Clique em um número no mapa pra escolher onde se esconder.";
@@ -213,8 +219,9 @@ document.getElementById("btn-jogar-novamente").addEventListener("click", () => {
 
 function jogadorSobreviveu() {
   estado = "sobreviveu";
+  document.getElementById("musica-fundo").pause();
   document.getElementById("status-jogo").textContent = "Você sobreviveu!";
-  document.getElementById("game-over-texto").textContent = "O monstro terminou a ronda e não te encontrou!";
+  document.getElementById("game-over-texto").textContent = "O monstro Lulu terminou a ronda e não te encontrou!";
   document.getElementById("game-over").style.display = "flex";
 }
 

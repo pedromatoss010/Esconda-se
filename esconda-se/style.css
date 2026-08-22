@@ -204,7 +204,7 @@ h1 {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background-image: url(images/monstro-lulu.png);
+  background-image: url(assets/monstro-lulu.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -278,6 +278,10 @@ h1 {
 .game-over-overlay p {
   font-size: 28px;
   margin-bottom: 20px;
+}
+
+.gameover-box{
+  margin: auto; /* centraliza mesmo com o overlay usando align-items: flex-start */
 }
 
 #btn-jogar-novamente {
