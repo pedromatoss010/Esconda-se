@@ -1,0 +1,412 @@
+:root {
+  --bg-night: #0b0a0d;
+  --wall: #171313;
+  --wall-trim: #2b2320;
+  --floor-line: rgba(0, 0, 0, .28);
+  --ink: #e8e1d3;
+  --ink-dim: #a89c88;
+  --accent-amber: #e0a458;
+  --accent-amber-dim: #7a5a2c;
+  --room-quarto: #432c2e;
+  --room-banheiro: #2b3f47;
+  --room-sala: #453120;
+  --room-cozinha: #31404a;
+  --room-despensa: #221b16;
+  --room-garagem: #333330;
+  --room-corredor: #28221f;
+
+  --wood: #3c2c1f;
+  --wood-dark: #241a12;
+  --wood-line: rgba(232, 225, 211, .28);
+  --fabric: #5b3a3f;
+  --fabric-light: #8a5b57;
+  --fixture: #cbc4b4;
+  --fixture-dim: #9d9484;
+  --metal: #54545c;
+  --metal-light: #797983;
+  --screen: #7d99a3;
+  --rug: rgba(0, 0, 0, .18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 50% 30%, #1a1620 0%, var(--bg-night) 65%);
+  color: var(--ink);
+  font-family: "Special Elite", monospace;
+  padding: 32px 14px 60px;
+  min-height: 100vh;
+}
+
+.wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.intro-box{
+  max-width:520px;
+  width:100%;
+  margin:0 auto;
+  background:var(--wall);
+  border:1px solid var(--wall-trim);
+  border-radius:10px;
+  padding:24px 20px;
+  text-align:left;
+  font-family:"Special Elite", monospace;
+  box-sizing:border-box;
+}
+
+.intro-box h2{
+  font-family:"Creepster", cursive;
+  color:var(--accent-amber);
+  font-size:28px;
+  margin:0 0 14px;
+  text-align:center;
+}
+
+.intro-box p{
+  font-size:14px;
+  line-height:1.5;
+  color:var(--ink);
+  margin:0 0 14px;
+}
+
+.intro-box button{
+  display:block;
+  margin:18px auto 0;
+  font-family:"Special Elite", monospace;
+  font-size:14px;
+  background:radial-gradient(circle, var(--accent-amber) 0%, var(--accent-amber-dim) 85%);
+  color:#241a0c;
+  border:none;
+  padding:12px 26px;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+h1 {
+  font-family: "Creepster", cursive;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-size: clamp(32px, 5vw, 56px);
+  color: var(--accent-amber);
+  text-shadow: 0 0 18px rgba(224, 164, 88, .35), 0 2px 0 #000;
+  margin: 0 0 8px;
+}
+
+.subtitle {
+  color: var(--ink-dim);
+  font-size: 15px;
+  letter-spacing: .5px;
+}
+
+.house-frame {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 14px;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.house-scaler {
+  position: relative;
+  margin: 0 auto;
+}
+
+.house {
+  width: 1200px;
+  height: 800px;
+  transform-origin: top left;
+  position: relative;
+}
+
+.room {
+  position: absolute;
+  border: 2px solid var(--wall-trim);
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, .45);
+}
+
+.room-label {
+  position: absolute;
+  top: 10px;
+  left: 14px;
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: var(--ink);
+  text-shadow: 0 1px 2px #000;
+  pointer-events: none;
+}
+
+.furniture {
+  position: absolute;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 5px rgba(0, 0, 0, .55));
+}
+
+.furniture svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.rug {
+  position: absolute;
+  background: var(--rug);
+  pointer-events: none;
+}
+
+.wall {
+  position: absolute;
+  background: var(--wall-trim);
+  pointer-events: none;
+}
+
+.door {
+  position: absolute;
+  pointer-events: none;
+}
+
+.door svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.door .leaf,
+.door .arc {
+  stroke: var(--wood-line);
+  fill: none;
+}
+
+.door .leaf {
+  stroke-width: 2.5;
+}
+
+.door .arc {
+  stroke-width: 1.5;
+  stroke-dasharray: 4 3;
+}
+
+#monstro {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-image: url(images/monstro-lulu.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* box-shadow: 0 0 0 2px rgba(0, 0, 0, .7), 0 0 16px 4px rgba(178, 58, 58, .65); */
+  transform: translate(-50%, -50%);
+  z-index: 6;
+  pointer-events: none;
+  transition: box-shadow .2s ease;
+}
+
+.controls {
+  max-width: 900px;
+  margin: 0 auto 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  background: var(--wall);
+  border: 1px solid var(--wall-trim);
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+
+.status-text {
+  color: var(--ink);
+  font-size: 14px;
+  flex: 1;
+  min-width: 220px;
+}
+
+#btn-comecar {
+  font-family: "Special Elite", monospace;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: radial-gradient(circle, var(--accent-amber) 0%, var(--accent-amber-dim) 85%);
+  color: #241a0c;
+  border: none;
+  padding: 12px 26px;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 0 14px 2px rgba(224, 164, 88, .4);
+  transition: transform .15s ease, opacity .15s ease;
+}
+
+#btn-comecar:hover:not(:disabled) {
+  transform: scale(1.04);
+}
+
+#btn-comecar:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.game-over-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(8,4,4,.88);
+  color:var(--accent-amber);
+  text-align:center;
+  justify-content:center;
+  z-index:100;
+  padding:24px 16px 40px;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  align-items:flex-start;   /* era center — agora alinha no topo e deixa rolar */
+}
+
+.game-over-overlay p {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+#btn-jogar-novamente {
+  font-size: 16px;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 6px;
+  background: #e0a458;
+  color: #241a0c;
+  cursor: pointer;
+}
+
+@media (max-width:640px) {
+  body {
+    padding: 20px 10px 48px;
+  }
+
+  h1 {
+    font-size: 34px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 14px 16px;
+    max-width: 100%;
+  }
+
+  #btn-comecar {
+    width: 100%;
+  }
+
+  .house-frame {
+    padding: 10px;
+  }
+
+  .legend {
+    max-width: 100%;
+  }
+
+  .legend-desc {
+    display: none;
+  }
+}
+
+.hiding-spot {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-amber) 0%, var(--accent-amber-dim) 70%);
+  color: #241a0c;
+  font-family: "Special Elite", monospace;
+  font-weight: 700;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, .6), 0 0 14px 2px rgba(224, 164, 88, .55);
+  transform: translate(-50%, -50%);
+  transition: transform .15s ease, box-shadow .15s ease;
+  z-index: 5;
+}
+
+.hiding-spot::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1px solid rgba(224, 164, 88, .5);
+  animation: pulse 2.2s ease-out infinite;
+}
+
+.hiding-spot:hover,
+.hiding-spot.active {
+  transform: translate(-50%, -50%) scale(1.15);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, .7), 0 0 22px 6px rgba(224, 164, 88, .8);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(.7);
+    opacity: .9;
+  }
+
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+/* room tints */
+.quarto1,
+.quarto2 {
+  background: var(--room-quarto);
+}
+
+.banheiro {
+  background: var(--room-banheiro);
+}
+
+.corredor {
+  background: var(--room-corredor);
+}
+
+.sala {
+  background: var(--room-sala);
+}
+
+.cozinha {
+  background: var(--room-cozinha);
+}
+
+.despensa {
+  background: var(--room-despensa);
+}
+
+.garagem {
+  background: var(--room-garagem);
+}
+footer {
+  text-align: center;
+  color: var(--ink-dim);
+  font-size: 12px;
+  margin-top: 40px;
+  letter-spacing: .5px;
+}
