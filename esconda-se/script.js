@@ -23,6 +23,15 @@ document.getElementById("btn-entendi").addEventListener("click", () => {
   document.getElementById("musica-fundo").play();
 });
 
+document.addEventListener("visibilitychange", () => {
+  const musica = document.getElementById("musica-fundo");
+  if (document.hidden) {
+    musica.pause();
+  } else if (estado === "jogando") {
+    musica.play();
+  }
+});
+
 const rotasPorEsconderijo = {
   1: [
     { x: 210, y: 425, acao: "andar",    duracao: 0 },
