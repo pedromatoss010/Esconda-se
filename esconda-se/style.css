@@ -201,10 +201,10 @@ h1 {
 
 #monstro {
   position: absolute;
-  width: 48px;
-  height: 48px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  background-image: url(assets/monstro-lulu.png);
+  background-image: url(assets/monstro.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
